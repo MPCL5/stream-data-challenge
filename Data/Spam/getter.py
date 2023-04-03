@@ -8,9 +8,13 @@ DATA_PATH = './Data/Spam/data.csv'
 DATA_URL = 'https://github.com/ogozuacik/concept-drift-datasets-scikit-multiflow/blob/master/real-world/spam.csv?raw=true'
 
 
-def spam_stream_getter() -> Stream:
+def get_spam_stream() -> Stream:
     if not os.path.exists(DATA_PATH):
+        print('Spam dataset does not exists on local!')
         download(DATA_URL, DATA_PATH)
 
-    return FileStream(DATA_PATH)
+    stream = FileStream(DATA_PATH)
+    stream.basename = 'Spam'  # customize stream name
+
+    return stream
 
