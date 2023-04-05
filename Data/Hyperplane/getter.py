@@ -26,7 +26,7 @@ class HyperplaneGeneratorSaver(HyperplaneGenerator, GeneratorSaver):
 
 
 # NOTE: these functions are duplicated among project for the sake of readability.
-def get_sea_stream() -> Stream:
+def get_hyperplane_stream() -> Stream:
     print(f'Getting {DATA_NAME}...')
     print(f'Loading local data from {DATA_PATH}')
     if os.path.exists(DATA_PATH):
