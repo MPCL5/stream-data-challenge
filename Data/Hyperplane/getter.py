@@ -1,18 +1,21 @@
 from skmultiflow.data import FileStream
 from skmultiflow.data.base_stream import Stream
-from skmultiflow.data.sea_generator import SEAGenerator
+from skmultiflow.data.hyper_plane_generator import HyperplaneGenerator
 import os
 
 from Utils.generator_saver import GeneratorSaver
 
-DATA_PATH = './Data/Sea/data.csv'
-DATA_NAME = 'SEA Dataset'
+DATA_PATH = './Data/Hyperplane/data.csv'
+DATA_NAME = 'Hyperplane Dataset'
 
 
-class SEAGeneratorSaver(SEAGenerator, GeneratorSaver):
-    def __init__(self, classification_function=0, random_state=None, balance_classes=False,
-                 noise_percentage=0.0, data_path='./data'):
-        SEAGenerator.__init__(self, classification_function, random_state, balance_classes, noise_percentage)
+class HyperplaneGeneratorSaver(HyperplaneGenerator, GeneratorSaver):
+    def __init__(self, random_state=None, n_features=10, n_drift_features=2, mag_change=0.0,
+                 noise_percentage=0.05, sigma_percentage=0.1, data_path='./data.csv'):
+        HyperplaneGenerator.__init__(self, random_state=random_state, n_features=n_features,
+                                     n_drift_features=n_drift_features, mag_change=mag_change,
+                                     noise_percentage=noise_percentage, sigma_percentage=sigma_percentage)
+
         GeneratorSaver.__init__(self, data_path=data_path)
 
     def next_sample(self, batch_size=1):
@@ -36,6 +39,6 @@ def get_sea_stream() -> Stream:
         os.remove(DATA_PATH)
 
     print('Local dataset is not fine! Generating...')
-    stream = SEAGeneratorSaver(data_path=DATA_PATH)
+    stream = HyperplaneGeneratorSaver(data_path=DATA_PATH)
     stream.basename = DATA_NAME
     return stream

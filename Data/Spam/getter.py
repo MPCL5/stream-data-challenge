@@ -6,6 +6,7 @@ from Utils.downloader import download
 
 DATA_PATH = './Data/Spam/data.csv'
 DATA_URL = 'https://github.com/ogozuacik/concept-drift-datasets-scikit-multiflow/blob/master/real-world/spam.csv?raw=true'
+DATA_NAME = 'Spam'
 
 
 def get_spam_stream() -> Stream:
@@ -14,7 +15,7 @@ def get_spam_stream() -> Stream:
         download(DATA_URL, DATA_PATH)
 
     stream = FileStream(DATA_PATH)
-    stream.basename = 'Spam'  # customize stream name
+    stream.basename = DATA_NAME  # customize stream name
 
     return stream
 

@@ -6,6 +6,7 @@ from Utils.downloader import download
 
 DATA_PATH = './Data/Rialto/data.csv'
 DATA_URL = 'https://raw.githubusercontent.com/ogozuacik/concept-drift-datasets-scikit-multiflow/master/real-world/rialto.csv'
+DATA_NAME = 'Rialto'
 
 
 def get_rialto_stream() -> Stream:
@@ -14,6 +15,6 @@ def get_rialto_stream() -> Stream:
         download(DATA_URL, DATA_PATH)
 
     stream = FileStream(DATA_PATH)
-    stream.basename = 'Rialto'  # customize stream name
+    stream.basename = DATA_NAME  # customize stream name
 
     return stream
