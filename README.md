@@ -4,7 +4,7 @@ The field of stream data mining has become increasingly important due to the hig
 
 The ensemble methods used in this project include **Adaptive Random Forest**, **Streaming Agnostic Model with k-Nearest Neighbors**, **Streaming Random Patches**, and **Dynamic Weighted Majority**. The performance of these ensemble methods is compared to the performance of a **Multi Layer Perceptron** neural network model using a test-then-train prequential evaluation method.
 
-To gain a comprehensive understanding of the performance of these methods, both synthetic and real datasets are used. Real data streams are obtained from the **Spam** and **Rialto** datasets, which are publicly available ([access](https://github.com/ogozuacik/conceptdrift-datasets-scikit-multiflow)). Synthetic datasets are generated using the **HyperplaneGenerator** and **SEAGenerator** classes from scikit-multiflow to create 10,000 samples of each dataset. The results and generated data of these experiments are saved in a CSV file for further testing and analysis.
+To gain a comprehensive understanding of the performance of these methods, both synthetic and real datasets are used. Real data streams are obtained from the **Spam** and **Rialto** datasets, which are publicly available ([access](https://github.com/ogozuacik/concept-drift-datasets-scikit-multiflow)). Synthetic datasets are generated using the **HyperplaneGenerator** and **SEAGenerator** classes from scikit-multiflow to create 10,000 samples of each dataset. The results and generated data of these experiments are saved in a CSV file for further testing and analysis.
 
 ## Getting Started
 
