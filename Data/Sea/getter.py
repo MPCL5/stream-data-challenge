@@ -1,6 +1,7 @@
 from skmultiflow.data import FileStream
 from skmultiflow.data.base_stream import Stream
 from skmultiflow.data.sea_generator import SEAGenerator
+import numpy as np
 import os
 
 from Utils.generator_saver import GeneratorSaver
@@ -17,6 +18,7 @@ class SEAGeneratorSaver(SEAGenerator, GeneratorSaver):
 
     def next_sample(self, batch_size=1):
         X, y = super().next_sample(batch_size)
+        X = np.hstack((X, X, X))  # because we have issues in low dimensionality
         self.save_data(X, y)
 
         return X, y

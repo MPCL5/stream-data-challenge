@@ -20,11 +20,11 @@ def evaluate_stram(stream, output_file, samples=10000):
     print('Initializing models...')
     arf_cls = AdaptiveRandomForestClassifier()
     sam_knn_cls = SAMKNNClassifier()
-    srp_cls = StreamingRandomPatchesClassifier()
+    srp_cls = StreamingRandomPatchesClassifier(n_estimators=50)
     dwn_cls = DynamicWeightedMajorityClassifier()
     mlp_cls = MLPClassifier(hidden_layer_sizes=(16, 16))
 
-    n_wait = math.ceil((samples - 200) / 20)
+    n_wait = math.ceil(samples / 20)
 
     # evaluator
     # The prequential evaluation method or interleaved test-then-train method.
@@ -39,7 +39,8 @@ def evaluate_stram(stream, output_file, samples=10000):
                        model_names=['ARF', 'MLP', 'SAM_KNN', 'DWN_CLS', 'SRP'])
 
 
-evaluate_stram(get_spam_stream(), './Results/Spam.csv', 6214)
+evaluate_stram(get_spam_stream(), './Results/Spam.csv', 6213)
 evaluate_stram(get_rialto_stream(), './Results/Rialto.csv', 82250)
 evaluate_stram(get_sea_stream(), './Results/Sea.csv')
 evaluate_stram(get_hyperplane_stream(), './Results/Hyperplane.csv')
+
